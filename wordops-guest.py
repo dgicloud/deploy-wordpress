@@ -92,7 +92,7 @@ while loop:
         stdin, stdout, stderr = ssh.exec_command('wo secure --auth\n')
         print(*stdout.readlines(), sep='')
 
-    elif opcao == '15':
+    elif opcao == '10':
         loop = False
 
     else:
