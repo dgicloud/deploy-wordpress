@@ -84,15 +84,15 @@ while loop:
     elif opcao == '8':
         ssl_site = input("Digite o site que é para gerar o ssl. ATENÇÃO O DOMINIO TEM QUE ESTÁ APONTADO PARA O SERVIDOR: ")
         print(f'\n----------------------------------\nGerando ssl DO SITE: {ssl_site} \n----------------------------------')
-        stdin, stdout, stderr = ssh.exec_command('wo stack uninstall\n')
+        stdin, stdout, stderr = ssh.exec_command(f'wo site {ssl_site} --letsencrypt\n')
         print(*stdout.readlines(), sep='')
 
     elif opcao == '9':
-        print('\n----------------------------------\nRemover stack \n----------------------------------')
-        stdin, stdout, stderr = ssh.exec_command('wo stack uninstall\n')
+        print('\n----------------------------------\nGerar acesso ao servidor\n----------------------------------')
+        stdin, stdout, stderr = ssh.exec_command('wo secure --auth\n')
         print(*stdout.readlines(), sep='')
 
-    elif opcao == '11':
+    elif opcao == '10':
         loop = False
 
     else:
