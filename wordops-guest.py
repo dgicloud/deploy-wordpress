@@ -23,7 +23,7 @@ def print_menu():
     print("5. Update de php 7.4")
     print("6. Turbinar o Wordpress com redis server")
     print("7. Deletar site")
-    print("8. Deletar site")
+    print("8. Remover stack")
     print("9. Limpar cache")
     print("10. Alterar credencial de back-end")
     print("11. Exit")
@@ -82,16 +82,17 @@ while loop:
         print(*stdout.readlines(), sep='')
 
     elif opcao == '8':
-        print('\n----------------------------------\nRemover stack \n----------------------------------')
-        stdin, stdout, stderr = ssh.exec_command('wo stack uninstall\n')
+        ssl_site = input("Digite o site que é para gerar o ssl. ATENÇÃO O DOMINIO TEM QUE ESTÁ APONTADO PARA O SERVIDOR: ")
+        print(f'\n----------------------------------\nGerando ssl DO SITE: {ssl_site} \n----------------------------------')
+        stdin, stdout, stderr = ssh.exec_command(f'wo site {ssl_site} --letsencrypt\n')
         print(*stdout.readlines(), sep='')
 
     elif opcao == '9':
-        print('\n----------------------------------\nRemover stack \n----------------------------------')
-        stdin, stdout, stderr = ssh.exec_command('wo stack uninstall\n')
+        print('\n----------------------------------\nGerar acesso ao servidor\n----------------------------------')
+        stdin, stdout, stderr = ssh.exec_command('wo secure --auth\n')
         print(*stdout.readlines(), sep='')
 
-    elif opcao == '11':
+    elif opcao == '15':
         loop = False
 
     else:
